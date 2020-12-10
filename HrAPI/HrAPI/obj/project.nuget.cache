@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "OcgjUTJ01hstOiZD9AIuitQW1IUZAb60u4G2J2Rdcp23OCJOz4qotFECrumwoFc0dwOzI6IRu1jTEZB38gLKxA==",
+  "dgSpecHash": "NKCtnvEA3jt8FY3qY5wdoMk7evSsUGjHoOeSoogTdhWv6grncbcLjAUmTPMkX4/1D4NTq1r2jZcLrUKmdUreaA==",
   "success": true,
-  "projectFilePath": "D:\\HR Main\\HrAPI\\HrAPI\\HrAPI.csproj",
+  "projectFilePath": "D:\\HR\\HrAPI\\HrAPI\\HrAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ADMIN\\.nuget\\packages\\microsoft.aspnetcore.authentication\\2.2.0\\microsoft.aspnetcore.authentication.2.2.0.nupkg.sha512",
     "C:\\Users\\ADMIN\\.nuget\\packages\\microsoft.aspnetcore.authentication.abstractions\\2.2.0\\microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",

@@ -9637,11 +9637,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\HR Main\\HrAPI\\HrAPI\\HrAPI.csproj",
+      "projectUniqueName": "D:\\HR\\HrAPI\\HrAPI\\HrAPI.csproj",
       "projectName": "HrAPI",
-      "projectPath": "D:\\HR Main\\HrAPI\\HrAPI\\HrAPI.csproj",
+      "projectPath": "D:\\HR\\HrAPI\\HrAPI\\HrAPI.csproj",
       "packagesPath": "C:\\Users\\ADMIN\\.nuget\\packages\\",
-      "outputPath": "D:\\HR Main\\HrAPI\\HrAPI\\obj\\",
+      "outputPath": "D:\\HR\\HrAPI\\HrAPI\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\ADMIN\\AppData\\Roaming\\NuGet\\NuGet.Config",
