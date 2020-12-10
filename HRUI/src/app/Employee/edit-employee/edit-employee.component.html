@@ -1,0 +1,133 @@
+<p-confirmDialog header="Confirmation" icon="pi pi-exclamation-triangle"></p-confirmDialog>
+<p-toast></p-toast>
+<p-toast position="top-left" key="tl"></p-toast>
+<p-toast position="top-center" key="tc"></p-toast>
+<p-toast position="bottom-center" key="bc"></p-toast>
+
+<p-toast position="bottom-center" key="c" (onClose)="onReject()" [baseZIndex]="5000">
+    <ng-template let-message pTemplate="message">
+        <div class="p-flex p-flex-column" style="flex: 1">
+            <div class="p-text-center">
+                <i class="pi pi-exclamation-triangle" style="font-size: 3rem"></i>
+                <h4>{{message.summary}}</h4>
+                <p>{{message.detail}}</p>
+            </div>
+            <div class="p-grid p-fluid">
+                <div class="p-col-6">
+                    <button type="button" pButton (click)="onConfirm()" label="Yes" class="p-button-success"></button>
+                </div>
+                <div class="p-col-6">
+                    <button type="button" pButton (click)="onReject()" label="No" class="p-button-secondary"></button>
+                </div>
+            </div>
+        </div>
+    </ng-template>
+</p-toast>
+
+<br>
+<div class="container">
+    <h3 [translate]="'HR.Update'"></h3>
+    <br>
+    <form #frm="ngForm" (ngSubmit)="update()">
+        <div class="form-row">
+            <div class="col-md-6">
+                <input [(ngModel)]="Employee.name" type="text" #EmpName="ngModel"
+                    [class.is-invalid]="EmpName.invalid && EmpName.touched" [class.is-valid]="EmpName.valid" required
+                    minlength="3" name="Name" id="EmpName" class="form-control" [placeholder]="'HR.name' | translate"
+                    aria-describedby="helpId">
+                <small [hidden]="EmpName.valid || EmpName.untouched" id="helpId" class="text-muted"
+                    [translate]="'HR.messege'"></small>
+            </div>
+            <div class="col-md-3">
+                <input type="text" #code="ngModel" [class.is-invalid]="code.invalid && code.touched"
+                    [class.is-valid]="code.valid" [(ngModel)]="Employee.code" required minlength="3" name="code"
+                    id="code" class="form-control" [placeholder]="'HR.Code' | translate" aria-describedby="helpId">
+                <small [hidden]="code.valid || code.untouched" id="helpId" class="text-muted"
+                    [translate]="'HR.messege'"></small>
+            </div>
+            <div class="col-md-3">
+                <input type="date" onfocus="(this.type='date')" onblur="(this.type='text')" formaction="mm-dd-yyyy"
+                    class="form-control" [placeholder]="'HR.dateOfBirth' | translate" value="2011-09-29" name="DOB"
+                    [(ngModel)]="Employee.dateOfBirth">
+            </div>
+        </div>
+        <br>
+        <div class="form-row">
+            <div class="col-md-6">
+                <input type="text" #EmpAddress="ngModel" [class.is-invalid]="EmpAddress.invalid && EmpAddress.touched"
+                    [class.is-valid]="EmpAddress.valid" [(ngModel)]="Employee.address" required minlength="3"
+                    name="EmpAddress" id="EmpName" class="form-control" [placeholder]="'HR.Address' | translate"
+                    aria-describedby="helpId">
+                <small [hidden]="EmpAddress.valid || EmpAddress.untouched" id="helpId" class="text-muted"
+                    [translate]="'HR.messege'"></small>
+            </div>
+            <div class="col-md-3">
+                <input type="number" name="GYear" [(ngModel)]="Employee.graduatioYear" class="form-control" min="1890"
+                    [placeholder]="'HR.graduatioYear' | translate">
+            </div>
+            <div class="col-md-3">
+                <input type="date" onfocus="(this.type='date')" onblur="(this.type='text')" matTooltip="text"
+                    formaction="mm-dd-yyyy" class="form-control" [placeholder]="'HR.HiringDate' | translate"
+                    value="2011-09-29" name="HiringData" [(ngModel)]="Employee.hiringDateHiringDate">
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-md-4">
+                <!-- <select required [(ngModel)]="Employee.professionID" name="sel2" class="form-control">Profession
+                    <option value="" selected disabled hidden>Profession</option>
+                    <option *ngFor="let item of profession"
+                        [selected]="Employee.professionID==item.id ? true : null"  value="{{item.id}}">{{item.name}}
+                    </option>
+                </select> -->
+                <select [(ngModel)]="Employee.professionID" [ngModelOptions]="{standalone: true}" name="cat"
+                    class="form-control">
+                    <option value="" selected disabled hidden>Profession Name</option>
+                    <option *ngFor="let Prof of profession"
+                       [selected]="Employee.professionID===Prof.id ? true : null"
+                        value="{{Prof.id}}">{{Prof.name}}</option>
+                </select>
+            </div>
+            <div class="col-md-4">
+                <select name="gender" [(ngModel)]="Employee.gender" class="form-control">
+                    <option value="Male">male</option>
+                    <option value="Female">female</option>
+                </select>
+            </div>
+            <div class="col-md-4">
+                <select name="Mstatus" [(ngModel)]="Employee.maritalStatus" class="form-control">
+                    <option value="Single">Single</option>
+                    <option value="married">Married</option>
+                </select>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-md-6">
+                <input type="text" class="form-control" name="email" [(ngModel)]="Employee.email"
+                    [placeholder]="'HR.Email' | translate">
+            </div>
+            <div class="col-md-3">
+                <input mask="88888" class="form-control" type="text" name="phone" [(ngModel)]="Employee.phone"
+                    [placeholder]="'HR.phone' | translate">
+            </div>
+            <div class="col-md-3">
+                <input class="form-control" type="text" name="Rphone" [(ngModel)]="Employee.relevantPhone"
+                    [placeholder]="'HR.relevantPhone' | translate">
+            </div>
+        </div>
+        <br>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroupFileAddon01" [translate]="'HR.Upload'"></span>
+            </div>
+            <div class="custom-file">
+                <input accept="image/*" (change)="onFileSelected($event.target.files)" type="file"
+                    class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
+                <label class="custom-file-label" for="inputGroupFile01" [translate]="'HR.Choose file'"></label>
+            </div>
+        </div>
+        <button id="Add" type="submit" [disabled]="frm.invalid" class="btn btn-primary" [translate]="'HR.Update'"></button>
+    </form>
+</div>
+<br>

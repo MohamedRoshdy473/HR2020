@@ -1,0 +1,100 @@
+<br>
+<div class="container">
+    <h3 [translate]="'HR.New Employee'"></h3>
+    <br>
+    <form #frm="ngForm" (ngSubmit)="add()">
+        <div class="form-row">
+            <div class="col-md-6">
+                <input type="text" #EmpName="ngModel" [class.is-invalid]="EmpName.invalid && EmpName.touched"
+                    [class.is-valid]="EmpName.valid" [(ngModel)]="Employee.Name" required minlength="3" name="Name"
+                    id="EmpName" class="form-control" [placeholder]="'HR.name' | translate" aria-describedby="helpId">
+                <small [hidden]="EmpName.valid || EmpName.untouched" id="helpId" class="text-muted">Name must be more
+                    than 3
+                    letters</small>
+            </div>
+            <div class="col-md-3">
+                <input type="text" #code="ngModel" [class.is-invalid]="code.invalid && code.touched"
+                    [class.is-valid]="code.valid" [(ngModel)]="Employee.code" required minlength="3" name="code"
+                    id="code" class="form-control" [placeholder]="'HR.Code' | translate" aria-describedby="helpId">
+                <small [hidden]="code.valid || code.untouched" id="helpId" class="text-muted">Code must be more than 3
+                    letters</small>
+            </div>
+            <div class="col-md-3">
+                <input type="date" class="form-control" [placeholder]="'HR.dateOfBirth' | translate" name="DOB"
+                    [(ngModel)]="Employee.DateOfBirth">
+            </div>
+        </div>
+        <br>
+        <div class="form-row">
+            <div class="col-md-6">
+                <input type="text" #EmpAddress="ngModel" [class.is-invalid]="EmpAddress.invalid && EmpAddress.touched"
+                    [class.is-valid]="EmpAddress.valid" [(ngModel)]="Employee.Address" required minlength="3"
+                    name="EmpAddress" id="EmpName" class="form-control" [placeholder]="'HR.Address' | translate"
+                    aria-describedby="helpId">
+                <small [hidden]="EmpAddress.valid || EmpAddress.untouched" id="helpId" class="text-muted"></small>
+            </div>
+            <div class="col-md-3">
+                <input type="number" name="GYear" [(ngModel)]="Employee.GraduatioYear" class="form-control" min="1890"
+                    [placeholder]="'HR.graduatioYear' | translate">
+            </div>
+            <div class="col-md-3">
+                <input type="date" class="form-control" name="HiringData" [(ngModel)]="Employee.HiringDate"
+                    [placeholder]="'HR.HiringDate' | translate">
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-md-4">
+                <select [(ngModel)]="Employee.ProfessionID" name="sel2" class="form-control">Profession
+                    <option value="" selected disabled hidden>Profession</option>
+                    <option *ngFor="let item of profession" value="{{item.id}}">{{item.name}}</option>
+                </select>
+            </div>
+            <div class="col-md-4">
+                <select name="gender" [(ngModel)]="Employee.gender" class="form-control">
+                    <option value="" disabled selected [translate]="'HR.gender'"></option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                </select>
+            </div>
+            <div class="col-md-4">
+                <select name="Mstatus" [(ngModel)]="Employee.MaritalStatus" class="form-control">
+                    <option disabled selected [translate]="'HR.maritalStatus'"></option>
+                    <option value="Single">Single</option>
+                    <option value="married">Married</option>
+                </select>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-md-6">
+                <input type="text" class="form-control" name="email" [(ngModel)]="Employee.Email"
+                    [placeholder]="'HR.Email' | translate">
+
+            </div>
+            <div class="col-md-3">
+                <input mask="88888" class="form-control" type="text" name="phone" [(ngModel)]="Employee.Phone"
+                    [placeholder]="'HR.phone' | translate">
+
+            </div>
+            <div class="col-md-3">
+                <input class="form-control" type="text" name="Rphone" [(ngModel)]="Employee.RelevantPhone"
+                    [placeholder]="'HR.relevantPhone' | translate">
+            </div>
+        </div>
+        <br>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroupFileAddon01" [translate]="'HR.Upload'"></span>
+            </div>
+            <div class="custom-file">
+                <input accept="image/*" (change)="onFileSelected($event.target.files)" type="file"
+                    class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
+                <label class="custom-file-label" for="inputGroupFile01" [translate]="'HR.Choose file'"></label>
+            </div>
+        </div>
+        <br>
+        <button id="Add" type="submit" [disabled]="frm.invalid" class="btn btn-primary" [translate]="'HR.Add'"></button>
+    </form>
+</div>
+<br>

@@ -1,0 +1,4 @@
+.gradient {
+  scrollbar-width: none;
+    background: linear-gradient(90deg, #7d88e9 0%, #daae51 100%);
+  }

@@ -1,0 +1,315 @@
+<div id="main" style="margin-left: 0px;padding-top: 0px;padding-bottom: 0px;padding-right: 0px;padding-left: 0px;">
+    <nav class="navbar navbar-expand-md navbar-dark bgCOLOR">
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+            data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <span style="font-size:30px;cursor:pointer" (click)="openNav()">&#9776;</span>
+            <a class="navbar-brand" href="#">
+                <!-- <img src="../../../assets/images/logo.jpeg" width="50" height="50" class="d-inline-block align-top"
+                    alt=""> -->
+                <span style="color: rgb(26, 3, 3); padding-left: 5px;" class="menu-collapsed"
+                    [translate]="'HR.AL-Mostakbal'"></span>
+            </a>
+
+            <ul class="navbar-nav ml-auto">
+                <!-- <li class="nav-item active">
+                    <a class="nav-link" href="#top" [translate]="'HR.Home'"><span class="sr-only">(current)</span></a>
+                </li> -->
+                <li class="nav-item ">
+                    <a style="color: rgb(26, 3, 3)" class="nav-link" href="#top">{{userName}} <span
+                            class="sr-only">(current)</span></a>
+                </li>
+                <div style="margin-top: 3px;">
+                    <label>
+                        <select #langSelect (change)="translate.use(langSelect.value)"
+                            class="btn btn-success dropdown-toggle">
+                            <option *ngFor="let lang of translate.getLangs()" [value]="lang"
+                                [selected]="lang === translate.currentLang">{{ lang }}</option>
+                        </select>
+                    </label>
+                </div>
+                <li class="nav-item">
+                    <a href="#" class="btn btn-warning" [translate]="'HR.Logout'"
+                        style="margin-left: 10px; font-size: 15px;" (click)="logout()">
+                    </a>
+                </li>
+
+                <!-- <li class="nav-item dropdown d-sm-block d-md-none ">
+                    <a class="nav-link dropdown-toggle" href="#" id="smallerscreenmenu" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false"> Menu </a>
+                    <div class="dropdown-menu" aria-labelledby="smallerscreenmenu">
+                        <a class="dropdown-item" href="#top" [translate]="'HR.Dashboard'"></a>
+                        <a class="dropdown-item" href="#top" [translate]="'HR.Profile'"></a>
+                        <a class="dropdown-item" href="#top" [translate]="'HR.Tasks'"></a>
+                    </div>
+                </li> -->
+            </ul>
+        </div>
+    </nav>
+    <div style="margin-top: 5px;">
+        <app-main></app-main>
+    </div>
+</div>
+<div id="mySidenav" class="sidenav">
+    <a>
+        <img src="../../../assets/images/logo.jpeg" alt=""
+            style="border-radius: 50%; margin-left: 18px; margin-top: -50px;">
+        <!-- <span class="menu-collapsed" [translate]="'HR.AL-Mostakbal'"></span> -->
+    </a>
+    <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
+    <nav class="main-menu" style="margin-top: 5.2%;">
+        <div>
+            <ul>
+                <!-- <li>
+                    <a *ngIf="isAdmin()" href="#submenu1" data-toggle="collapse" aria-expanded="false">
+
+                        <i class="fa fa-laptop fa-2x"></i>
+                        <span class="nav-text" [translate]="'HR.Dashboard'" style="margin-left: 8px; font-size: 15px;">
+                            Stars Components
+                        </span>
+                    </a>
+                </li> -->
+                <li>
+                    <a href="#submenu1" data-toggle="collapse" aria-expanded="false">
+                        <div>
+                            <i class="fa fa-laptop fa-2x"></i>
+                            <span class="menu-collapsed" [translate]="'HR.Dashboard'"
+                                style="margin-left: 10px; font-size: 15px;"></span>
+                            <span class="submenu-icon ml-auto"></span>
+                        </div>
+                    </a>
+                    <!-- Submenu content -->
+                    <div id='submenu1' class="collapse sidebar-submenu">
+                        <a *ngIf="isAdmin()" [routerLink]="['/AllLUsers']"
+                            class="list-group-item list-group-item-action text-white">
+                            <span class="menu-collapsed" [translate]="'HR.Users'"></span>
+                        </a>
+                    </div>
+                </li>
+                    <!-- Submenu content -->
+
+                    <!-- <a *ngIf="isAdmin()" id='submenu1' data-toggle="collapse" aria-expanded="false"
+                        [routerLink]="['/AllLUsers']" class="collapse sidebar-submenu">
+                        <i class="fa fa-laptop fa-2x"></i>
+                        <span class="nav-text" [translate]="'HR.Users'" style="margin-left: 8px; font-size: 15px;">
+                            Stars Components
+                        </span>
+                    </a> -->
+                    <!--                     
+                    <a href="#">
+                        <span class="menu-collapsed" [translate]="'HR.Reports'"></span>
+                    </a>
+                    <a>
+                        <span class="menu-collapsed" [translate]="'HR.Tables'"></span>
+                    </a> -->
+              
+                <li>
+                    <a *ngIf="isAdmin()" [routerLink]="['/employee']">
+                        <div>
+                            <i class="fa fa-user-circle-o fa-2x"></i>
+                            <span class="menu-collapsed" [translate]="'HR.Employees'"
+                                style="margin-left: 8px; font-size: 15px;"></span>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#Excuses" data-toggle="collapse" aria-expanded="false">
+                        <div>
+                            <i class="fa fa-envelope-open-o fa-2x"></i>
+                            <span class="menu-collapsed" [translate]="'HR.Excuses'"
+                                style="margin-left: 10px; font-size: 15px;"></span>
+                            <span class="submenu-icon ml-auto"></span>
+                        </div>
+                    </a>
+                    <!-- Submenu content -->
+                    <div id='Excuses' class="collapse sidebar-submenu">
+                        <a [routerLink]="['/AddExcuse']">
+                            <span class="menu-collapsed" [translate]="'HR.Add Excuse'"></span>
+                        </a>
+                        <a *ngIf="isAdmin()" [routerLink]="['/AllExcuses']"
+                            class="list-group-item list-group-item-action text-white">
+                            <span class="menu-collapsed" [translate]="'HR.All Excuses'"></span>
+                        </a>
+                    </div>
+                </li>
+                <li>
+                    <a href="#Leaves" data-toggle="collapse" aria-expanded="false">
+                        <div class="d-flex w-100 justify-content-start align-items-center">
+                            <i class="fa fa-caret-square-o-up fa-2x" aria-hidden="true"></i>
+                            <span class="menu-collapsed" [translate]="'HR.Leaves'"
+                                style="margin-left: 10px; font-size: 15px;"></span>
+                            <span class="submenu-icon ml-auto"></span>
+                        </div>
+                    </a>
+                    <!-- Submenu content -->
+                    <div id='Leaves' class="collapse sidebar-submenu">
+                        <a [routerLink]="['/AddLeave']">
+                            <span class="menu-collapsed" [translate]="'HR.Add Leave'"></span>
+                        </a>
+                        <a *ngIf="isAdmin()" [routerLink]="['/AllLeaves']">
+                            <span class="menu-collapsed" [translate]="'HR.All Leaves'"></span>
+                        </a>
+                        <a *ngIf="isAdmin()" [routerLink]="['/LeavesType']">
+                            <span class="menu-collapsed" [translate]="'HR.LeavesType'"></span>
+                        </a>
+                    </div>
+                </li>
+                <li>
+                    <a *ngIf="isAdmin()" href="#attendance" data-toggle="collapse" aria-expanded="false">
+                        <div>
+                            <i class="fa fa-chevron-circle-left fa-2x" aria-hidden="true"></i>
+                            <span class="menu-collapsed" [translate]="'HR.Attendance'"
+                                style="margin-left: 10px; font-size: 15px;"></span>
+                            <span class="submenu-icon ml-auto"></span>
+                        </div>
+                    </a>
+                    <!-- Submenu content -->
+                    <div id='attendance' class="collapse sidebar-submenu">
+                        <a [routerLink]="['/attendanceIN']">
+
+                            <span class="menu-collapsed" [translate]="'HR.IN'"></span>
+                        </a>
+                        <a [routerLink]="['/attendanceout']">
+                            <span class="menu-collapsed" [translate]="'HR.OUT'"></span>
+                        </a>
+                    </div>
+                </li>
+                <li>
+                    <a href="#NeedRequest" data-toggle="collapse" aria-expanded="false">
+                        <div>
+                            <i class="fa fa-envelope-open-o fa-2x"></i>
+                            <span class="menu-collapsed" [translate]="'HR.Need Request'"
+                                style="margin-left: 10px; font-size: 15px;"></span>
+                            <span class="submenu-icon ml-auto"></span>
+                        </div>
+                    </a>
+                    <!-- Submenu content -->
+                    <div id='NeedRequest' class="collapse sidebar-submenu">
+                        <a [routerLink]="['/NeedRequest']">
+                            <span class="menu-collapsed" [translate]="'HR.Need Request'"></span>
+                        </a>
+                        <a *ngIf="isAdmin()" [routerLink]="['/NeedRequestEmp']"
+                            class="list-group-item list-group-item-action text-white">
+                            <span class="menu-collapsed" [translate]="'HR.Need Request Employee'"></span>
+                        </a>
+                    </div>
+                </li>
+                <li>
+                    <a href="#Evaluations" data-toggle="collapse" aria-expanded="false">
+                        <div>
+                            <i class="fa fa-envelope-open-o fa-2x"></i>
+                            <span class="menu-collapsed" [translate]="'HR.Evaluations'"
+                                style="margin-left: 10px; font-size: 15px;"></span>
+                            <span class="submenu-icon ml-auto"></span>
+                        </div>
+                    </a>
+                    <!-- Submenu content -->
+                    <div id='Evaluations' class="collapse sidebar-submenu">
+                        <a [routerLink]="['/Evaluations']">
+                            <span class="menu-collapsed" [translate]="'HR.Evaluations'"></span>
+                        </a>
+                        <a *ngIf="isAdmin()" [routerLink]="['/EvaluationsProfession']">
+                            <span class="menu-collapsed" [translate]="'HR.Evaluations Profession'"></span>
+                        </a>
+                        <a [routerLink]="['/EvaluationType']">
+                            <span class="menu-collapsed" [translate]="'HR.Evaluation Type'"></span>
+                        </a>
+                    </div>
+                </li>
+                <li>
+                    <a [routerLink]="['/Certificates']">
+                        <i class="fa fa-home fa-2x"></i>
+                        <span class="nav-text" [translate]="'HR.Certificates'"
+                            style="margin-left: 8px; font-size: 15px;">
+                            Certificates
+                        </span>
+                    </a>
+                </li>
+                <li class="has-subnav">
+                    <a *ngIf="isAdmin()" [routerLink]="['/Instructor']">
+                        <i class="fa fa-sign-in fa-2x" aria-hidden="true"></i>
+                        <span class="nav-text" [translate]="'HR.Instructors'" style="margin-left: 8px; font-size: 15px;">
+                            Stars Components
+                        </span>
+                    </a>
+                </li>
+                <li class="has-subnav">
+                    <a *ngIf="isAdmin()" href="#Trainings" data-toggle="collapse" aria-expanded="false">
+                        <i class="fa fa-universal-access fa-2x" aria-hidden="true"></i>
+                        <span class="nav-text" [translate]="'HR.Trainings'" style="margin-left: 8px; font-size: 15px;">
+                            Stars Components
+                        </span>
+                    </a>
+                    <div id='Trainings' class="collapse sidebar-submenu">
+                        <a *ngIf="isAdmin()" [routerLink]="['/TrainingTypes']"
+                            class="list-group-item list-group-item-action flex-column align-items-start">
+                            <div class="d-flex w-100 justify-content-start align-items-center">
+                                <span class="fa fa-user fa-fw mr-3"></span>
+                                <span class="menu-collapsed" [translate]="'HR.TrainingTypes'"
+                                    style="margin-left: 8px; font-size: 15px;"></span>
+
+                            </div>
+                        </a>
+                        <a *ngIf="isAdmin()" [routerLink]="['/TrainingProfessions']"
+                            class="list-group-item list-group-item-action flex-column align-items-start">
+                            <div class="d-flex w-100 justify-content-start align-items-center">
+                                <span class="fa fa-user fa-fw mr-3"></span>
+                                <span class="menu-collapsed" [translate]="'HR.TrainingProfessions'"
+                                    style="margin-left: 8px; font-size: 15px;"></span>
+
+                            </div>
+                        </a>
+
+                        <a *ngIf="isAdmin()" [routerLink]="['/Trainings']"
+                            class="list-group-item list-group-item-action flex-column align-items-start">
+                            <div class="d-flex w-100 justify-content-start align-items-center">
+                                <span class="fa fa-user fa-fw mr-3"></span>
+                                <span class="menu-collapsed" [translate]="'HR.Trainings'"
+                                    style="margin-left: 8px; font-size: 15px;"></span>
+
+                            </div>
+                        </a>
+                    </div>
+                </li>
+                <li class="has-subnav">
+                    <a *ngIf="isAdmin()" [routerLink]="['/Courses']">
+                        <i class="fa fa-sign-in fa-2x" aria-hidden="true"></i>
+                        <span class="nav-text" [translate]="'HR.Courses'" style="margin-left: 8px; font-size: 15px;">
+                            Stars Components
+                        </span>
+                    </a>
+                </li>
+                <li class="has-subnav">
+                    <a *ngIf="isAdmin()" href="#Categories/SubCategories" data-toggle="collapse" aria-expanded="false">
+                        <div class="d-flex w-100 justify-content-start align-items-center">
+                            <i class="fa fa-window-restore fa-2x" aria-hidden="true"></i>
+                            <span class="menu-collapsed" [translate]="'HR.Categories SubCategories'"
+                                style="margin-left: 8px; font-size: 15px;"></span>
+                            <span class="submenu-icon ml-auto"></span>
+                        </div>
+                    </a>
+                    <div id='Categories/SubCategories' class="collapse sidebar-submenu">
+                        <a [routerLink]="['/Categories']" class="list-group-item list-group-item-action  text-white">
+                            <span class="fa fa-user fa-fw mr-3"></span>
+
+                            <span class="menu-collapsed" [translate]="'HR.Categories'"></span>
+                        </a>
+                        <a [routerLink]="['/SubCategories']" class="list-group-item list-group-item-action text-white">
+                            <span class="fa fa-user fa-fw mr-3"></span>
+
+                            <span class="menu-collapsed" [translate]="'HR.SubCategories'"></span>
+                        </a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+<!--dont forget expand main page-->
+<!-- <div><app-main-page></app-main-page></div> -->
+<!-- MAIN -->
+<!-- Main Col END -->
