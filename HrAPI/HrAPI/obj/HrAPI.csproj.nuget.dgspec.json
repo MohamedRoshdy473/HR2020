@@ -1,20 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "D:\\HR\\HrAPI\\HrAPI\\HrAPI.csproj": {}
+    "G:\\HR\\HrAPI\\HrAPI\\HrAPI.csproj": {}
   },
   "projects": {
-    "D:\\HR\\HrAPI\\HrAPI\\HrAPI.csproj": {
+    "G:\\HR\\HrAPI\\HrAPI\\HrAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\HR\\HrAPI\\HrAPI\\HrAPI.csproj",
+        "projectUniqueName": "G:\\HR\\HrAPI\\HrAPI\\HrAPI.csproj",
         "projectName": "HrAPI",
-        "projectPath": "D:\\HR\\HrAPI\\HrAPI\\HrAPI.csproj",
-        "packagesPath": "C:\\Users\\ADMIN\\.nuget\\packages\\",
-        "outputPath": "D:\\HR\\HrAPI\\HrAPI\\obj\\",
+        "projectPath": "G:\\HR\\HrAPI\\HrAPI\\HrAPI.csproj",
+        "packagesPath": "C:\\Users\\win10\\.nuget\\packages\\",
+        "outputPath": "G:\\HR\\HrAPI\\HrAPI\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\ADMIN\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\win10\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -91,7 +94,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
         }
       }
     }
